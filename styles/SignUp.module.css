@@ -1,0 +1,21 @@
+.currentContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.currentPage {
+  background: #4299e1;
+  border-radius: 4px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+.noCurrentPage {
+  color: #4299e1;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 8px 16px;
+}
