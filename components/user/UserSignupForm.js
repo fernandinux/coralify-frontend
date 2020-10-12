@@ -1,4 +1,7 @@
 import React from "react";
+import Link from "next/link";
+
+import { useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 
@@ -6,8 +9,7 @@ import { sign_up } from "./../../redux/slices/authSlice";
 import { loadingStarted, loadingStopped } from "./../../redux/slices/statusSlice";
 
 import styles from "./../../styles/SignIn.module.css";
-import Link from "next/link";
-import { Flex, Button } from "@chakra-ui/core";
+import { Flex, Button , Spinner } from "@chakra-ui/core";
 
 const validations = yup.object().shape({
   name: yup
@@ -26,6 +28,8 @@ const validations = yup.object().shape({
 });
 
 function UserSignupForm({ dispatch, router, setErrorMessage, errorMessage }) {
+  const loading = useSelector((state) => state.status.loading);
+
   return (
     <div>
       <Formik
@@ -124,7 +128,7 @@ function UserSignupForm({ dispatch, router, setErrorMessage, errorMessage }) {
               <Flex flexDirection="column">
                 <br />
                 <Button type="submit" className={styles.loginButton} variantColor="#4bc0d0">
-                  Registrarme
+                  {loading ? <Spinner color="white" size="sm" /> : "Registrarme"}
                 </Button>
                 <Link href="/signin">
                   <Button className={styles.forgotPasswordButton} variant="outline" variantColor="#4bc0d0">
